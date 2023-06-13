@@ -1,0 +1,1 @@
+export type packageManager = 'npm' | 'yarn' | 'pnpm';
