@@ -10,3 +10,6 @@ export const DEFAULT_DEV_PORT = 3000;
 export const DEFAULT_BANNER_DIR = 'banners';
 export const PACKAGE_NAME = 'react-banner-tool';
 export const DEFAULT_OUTPUT_DIR = 'dist';
+
+// Watcher variables
+export const REACT_EXT = ['tsx', 'ts', 'js', 'jsx'];
