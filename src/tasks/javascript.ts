@@ -15,7 +15,14 @@ export const compileJS = async ({entryPoints, path}: compileJSProps) => {
             bundle: true,
             outdir: `${DEFAULT_OUTPUT_DIR}/${path}`,
             plugins: [
-                postCssPlugin(),
+                postCssPlugin({
+                    stage: 1,
+                    browsers: 'last 2 versions',
+                    plugins: [
+                      require('postcss-preset-env'),
+                      require('postcss-combine-media-query')
+                    ]
+                  }),
             ],
         }).catch((e) => console.error(e.message));
         console.log(`Compiled JS: ${entryPoints}`);
