@@ -2,6 +2,7 @@ import * as esbuild from 'esbuild'
 import { DEFAULT_OUTPUT_DIR } from '../constants'
   // @ts-ignore
 import postCssPlugin from '@deanc/esbuild-plugin-postcss'
+import reactToHtml from '../utils/reactToHtml';
 
 type compileJSProps = {
     entryPoints: string[],
@@ -10,10 +11,13 @@ type compileJSProps = {
 
 export const compileJS = async ({entryPoints, path}: compileJSProps) => {
     console.log(`Compiling JS: ${entryPoints}`);
+        const outdir = `${DEFAULT_OUTPUT_DIR}/${path}`;
         await esbuild.build({
             entryPoints: entryPoints,
+            platform: 'node',
+            write: true,
             bundle: true,
-            outdir: `${DEFAULT_OUTPUT_DIR}/${path}`,
+            outdir: outdir,
             plugins: [
                 postCssPlugin({
                     stage: 1,
@@ -25,5 +29,7 @@ export const compileJS = async ({entryPoints, path}: compileJSProps) => {
                   }),
             ],
         }).catch((e) => console.error(e.message));
-        console.log(`Compiled JS: ${entryPoints}`);
+
+        reactToHtml(outdir);
+      console.log(`Compiled JS: ${entryPoints}`);
 };

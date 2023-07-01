@@ -12,7 +12,7 @@ program
 program
   .command('dev')
   .description('Start dev sever')
-  .option('-d, --dir <path>', 'Directory with your banner', `./{${DEFAULT_BANNERS_DIR}, ${DEFAULT_LAYOUTS_DIR}}`)
+  .option('-d, --dir <path>', 'Directory with your banner', `./{${DEFAULT_BANNERS_DIR}}`)
   .option('-p, --port <port>', 'Port to run dev server on', `./${DEFAULT_DEV_PORT}`)
   .action(dev)
 
