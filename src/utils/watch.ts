@@ -1,23 +1,25 @@
 import chokidar, {FSWatcher} from 'chokidar'
 import path from 'path'
 import { compileJS } from '../tasks/javascript'
-import { REACT_EXT } from '../constants'
-import { DEFAULT_BANNER_DIR } from '../constants'
+import { REACT_EXT, DEFAULT_BANNERS_DIR } from '../constants'
+import getAllDirsFromPath from './getAllDirsFromPath'
 
 export const watchInstance = (dir: string) => {
-    return chokidar.watch(dir, {
+    const cwd = dir.split(path.sep).slice(0, -1).join(path.sep)
+    const dirs = getAllDirsFromPath(dir)?.map(dir => `${cwd}${path.sep}${dir}`);
+    return chokidar.watch(dirs, {
         ignoreInitial: true,
-        cwd: dir.split(path.sep).slice(0, -1).join(path.sep),
+        cwd: cwd,
         ignored: /(^|[\/\\])\../,
     })
 }
 
-export const watch = (watchInstance: FSWatcher, dir: string) => {
+export const watch = (watchInstance: FSWatcher) => {
     watchInstance.on('all', async (event, filename) => {
         const file = filename.split(path.sep)
         const s_filename = file[file.length - 1].split('.')
         const fileExt = s_filename[s_filename.length - 1]
-        const export_path = file.slice(0, -1).filter(name => name !== DEFAULT_BANNER_DIR).join(path.sep)
+        const export_path = file.slice(0, -1).filter(name => name !== DEFAULT_BANNERS_DIR).join(path.sep)
 
         if(typeof fileExt !== 'string') return
         

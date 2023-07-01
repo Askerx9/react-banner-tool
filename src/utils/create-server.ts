@@ -11,12 +11,12 @@ export const createServer = async (
     const cwd = {rootDir: CURRENT_PATH}
     const packageManager: packageManager = await detect({cwd: cwd.rootDir}).catch(() => 'npm')
     const bannersDir = convertToAbsPath(dir)
-
+    
     if(type === 'dev'){
         console.log(`Starting ${packageManager} dev server in ${bannersDir}`)
         const watchInst = watchInstance(bannersDir)
 
-        watch(watchInst, bannersDir)
+        watch(watchInst)
     }
 
     console.log(cwd);
