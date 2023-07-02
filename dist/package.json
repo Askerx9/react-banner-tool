@@ -37,6 +37,7 @@
         "@commander-js/extra-typings": "^10.0.3",
         "@deanc/esbuild-plugin-postcss": "^1.0.2",
         "@manypkg/find-root": "^2.2.0",
+        "@types/react-dom": "^18.2.6",
         "chokidar": "^3.5.3",
         "commander": "^10.0.1",
         "detect-package-manager": "^2.0.1",
@@ -48,6 +49,8 @@
         "ora": "^6.3.1",
         "postcss-combine-media-query": "^1.0.1",
         "postcss-preset-env": "^8.5.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "read-pkg": "^8.0.0",
         "shelljs": "^0.8.5"
     }
