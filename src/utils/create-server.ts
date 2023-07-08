@@ -17,8 +17,5 @@ export const createServer = async (
         const watchInst = watchInstance(bannersDir)
 
         watch(watchInst)
-    }
-
-    console.log(cwd);
-    
+    }    
 }

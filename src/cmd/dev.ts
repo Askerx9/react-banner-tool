@@ -18,8 +18,6 @@ export const dev = async ({dir, port}: Args) => {
         });
 
         await createServer('dev', dir);
-        console.log(`Watching ${dir}`);
-
     } catch (error) {
         console.error(error);
     }

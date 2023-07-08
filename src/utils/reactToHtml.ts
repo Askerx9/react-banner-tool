@@ -12,7 +12,6 @@ const reactToHtml = async (dir: string) => {
         fse.writeFile(`${dir}/index.html`, html, (err) => {
             if (err) throw err;
             fse.removeSync(jsFile);
-            console.log('The file has been saved!');
         });
     }
 
