@@ -7,13 +7,13 @@ export const runTask = async (taskName: string, task: Function) => {
         await task();
         spinner.stopAndPersist({
             symbol: "✅",
-            text: `Finished ${chalk.bold(taskName)}`,
+            text: `${chalk.green('Compiled')} ${taskName}`,
         });
     }
     catch (e: any) {
         spinner.stopAndPersist({
             symbol: "❌",
-            text:chalk.red(`Failed ${chalk.bold(taskName)}`),
+            text:chalk.red(`Failed ${taskName}`),
         });
         console.error(e.message); 
     }
