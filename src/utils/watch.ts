@@ -1,6 +1,6 @@
 import chokidar, {FSWatcher} from 'chokidar'
 import path from 'path'
-import { compileJS } from '../tasks/javascript'
+import { compileReact } from '../tasks/javascript'
 import { REACT_EXT, DEFAULT_BANNERS_DIR } from '../constants'
 import getAllDirsFromPath from './getAllDirsFromPath'
 
@@ -24,7 +24,7 @@ export const watch = (watchInstance: FSWatcher) => {
         if(typeof fileExt !== 'string') return
         
         if(REACT_EXT.includes(fileExt)){
-            await compileJS({entryPoints: [filename], path: export_path})
+            await compileReact({entryPoints: [filename], path: export_path})
         }
     })
 }
